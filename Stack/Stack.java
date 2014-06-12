@@ -11,7 +11,7 @@
 
 class Stack<Type> {
 	private int maxSize;							// size of stack [array]
-	private int top;							// top of stack
+	private int top;								// top of stack
 	private Type[] stackArray;						// stack of elements
 	
 //.........................................................................
@@ -20,29 +20,27 @@ class Stack<Type> {
 //.........................................................................	
 	@SuppressWarnings("unchecked")
 	public Stack(int size) {						// parameterized constructor
-		maxSize = size > 0 ? size : 5;					// if size < 0, then size is 5 else size
-		top = -1;							// no items on the stack yet
-		stackArray = (Type[]) new Object[maxSize];			// create array of <Type>
+		maxSize = size > 0 ? size : 5;				// if size < 0, then size is 5 else size
+		top = -1;									// no items on the stack yet
+		stackArray = (Type[]) new Object[maxSize];	// create array of <Type>
 	}
 
 //.........................................................................
-	public void push(Type X) throws Exception {				// add an item to the stack
-		if (isFull()) 							// if stack is full
+	public void push(Type X) throws Exception {		// add an item to the stack
+		if (isFull()) 								// if stack is full
 		      throw new Exception(String.format("Stack is full, cannot push %s", X));
-		top++;
-		stackArray[top] = X;						// increment top and insert item
+		stackArray[++top] = X;						// increment top and insert item
 	}
 
 //.........................................................................
-	public Type pop() throws Exception {					// remove top item from the stack
-		if(isEmpty())							// if stack is empty
+	public Type pop() throws Exception {			// remove top item from the stack
+		if(isEmpty())								// if stack is empty
 			throw new Exception("Stack is empty, cannot pop");
-		
 		return stackArray[top--];					// return top item and decrement top
 	}
 
 //.........................................................................	
-	public Type top() {							// returns the top of the stack
+	public Type top() {								// returns the top of the stack
 		return stackArray[top];	
 	}
 	
@@ -53,7 +51,7 @@ class Stack<Type> {
 	
 //.........................................................................	
 	public boolean isFull() {
-		return (top == maxSize - 1);					// true if stack is full
+		return (top == maxSize - 1);				// true if stack is full
 	}
 //.........................................................................	
 }
